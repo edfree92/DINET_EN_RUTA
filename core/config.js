@@ -1,7 +1,7 @@
 const APP_CONFIG = {
-  MOCK_MODE: true,
+  MOCK_MODE: false,
   NON_BLOCKING: true,
-  ENDPOINT: "",
+  ENDPOINT: "https://script.google.com/macros/s/AKfycbxbjRosDsw1MeSitAqeU8RxWz54ewDdjhYi_DDczpJDivpKdJYfcpVDjclnq-7Mekch/exec",
   PATHS: {
     BASE: "./BASE/",
     DATA: "./data/",
