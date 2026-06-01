@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DINET EN RUTA - RAVI Play V3</title>
+  <style>
+    :root { --bg:#0f172a; --panel:rgba(15,23,42,.92); --text:#f8fafc; --muted:#cbd5e1; --accent:#22c55e; --blue:#2563eb; --orange:#f59e0b; --danger:#ef4444; --border:rgba(255,255,255,.18); }
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;overflow:hidden} #app{position:relative;width:100vw;height:100vh;background:#000;overflow:hidden}.scene-img{width:100%;height:100%;object-fit:contain;display:block;background:#000;transition:opacity 220ms ease}.bottom-bar{position:absolute;left:0;right:0;bottom:0;z-index:10;padding:12px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))}button{border:0;border-radius:14px;padding:13px 18px;font-weight:800;font-size:15px;cursor:pointer;color:white;background:var(--blue);box-shadow:0 5px 14px rgba(0,0,0,.24);min-width:135px}button.secondary{background:#64748b}button.success{background:var(--accent)}button.warning{background:var(--orange)}button.danger{background:var(--danger)}button:disabled{opacity:.55;cursor:not-allowed}.panel{position:absolute;z-index:20;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,820px);max-height:88vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:26px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.5)}.panel h1,.panel h2,.panel h3{margin:0 0 16px;text-align:center}.field{display:flex;flex-direction:column;gap:8px;margin:14px 0}label{font-weight:800;color:var(--muted)}input,select{width:100%;padding:13px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.92);color:#0f172a;font-size:16px}.suggestions{background:white;color:#111827;border-radius:12px;overflow:auto;max-height:220px;margin-top:6px;border:1px solid #e5e7eb}.suggestion-item{padding:10px 12px;cursor:pointer;border-bottom:1px solid #f1f5f9}.suggestion-item:hover{background:#e0f2fe}.quiz-option{border:1px solid var(--border);border-radius:14px;padding:12px;margin:10px 0;background:rgba(255,255,255,.06);cursor:pointer;display:flex;gap:10px;align-items:flex-start}.quiz-option.selected{outline:3px solid var(--orange);background:rgba(245,158,11,.18)}.quiz-option input{width:auto;margin-top:3px}.feedback-grid{display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:center}.feedback-grid img{width:100%;border-radius:18px}.result-line{margin:10px 0;line-height:1.45}.ok{color:#4ade80;font-weight:900}.bad{color:#f87171;font-weight:900}.yellow{color:#facc15;font-weight:900}.hidden{display:none!important}@media(max-width:720px){.feedback-grid{grid-template-columns:1fr}.feedback-grid img{max-height:240px;object-fit:contain}button{min-width:120px;font-size:13px;padding:12px 12px}.panel{padding:16px}}
+  </style>
+</head>
+<body>
+  <main id="app">
+    <img id="sceneImage" class="scene-img" alt="Escena RAVI Play" />
+    <section id="startPanel" class="panel hidden">
+      <h1>DINET EN RUTA</h1>
+      <p>Busca y selecciona tu nombre para iniciar la capacitación.</p>
+      <div class="field"><label for="userSearch">Nombre del participante</label><input id="userSearch" type="text" autocomplete="off" placeholder="Escribe tu nombre o apellido..." /><div id="userSuggestions" class="suggestions hidden"></div></div>
+      <p id="selectedUserText" class="yellow"></p>
+      <button id="continueToMapBtn" class="success" disabled>CONTINUAR</button>
+    </section>
+    <section id="quizPanel" class="panel hidden"></section>
+    <section id="feedbackPanel" class="panel hidden"></section>
+    <section id="finalPanel" class="panel hidden"></section>
+    <nav id="bottomBar" class="bottom-bar"></nav>
+    <audio id="introAudio" src="./BASE/V3.mp3" preload="auto" loop></audio>
+  </main>
+  <script src="./core/config.js"></script><script src="./core/state.js"></script><script src="./core/factory.js"></script><script src="./core/api.js"></script>
+  <script src="./adventures/picking_primer_nivel.js"></script><script src="./adventures/picking_altura.js"></script>
+  <script src="./ui/quiz.js"></script><script src="./ui/render.js"></script><script src="./ui/modals.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{initApp();});</script>
+</body>
+</html>
